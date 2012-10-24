@@ -9,10 +9,18 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no" />
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 		<link href="style.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 	</head>
 
 	<body>
+<<<<<<< HEAD
 	
+=======
+	<style>
+	
+	</style>		<!-- This is the top bit with the image. 
+		I wonder why there's no image tag here? -->
+>>>>>>> 8865913693746c227d84e5de89407297f0367e59
 		<div class="whitebit"></div>
 
 		<div class="bottombit">
@@ -21,7 +29,7 @@
 			</div>
 
 			<div class="area">
-				<div class="box box1"><div class="latitude"></div></div>
+				<div class="box box1"><div class="latitude">Blah</div></div>
 				<div class="box box2"><div class="longitude"></div></div>
 			</div>
 
@@ -29,7 +37,23 @@
 
 		<script type="text/javascript">
 		var count = 30;
+<<<<<<< HEAD
 var counter = setInterval(timer, 1000); 
+=======
+		var counter = setInterval(timer, 1000); 
+		
+		function timer() {
+		    count = count - 1;
+		    if (count <= 0) {
+		        clearInterval(counter);
+		        alert("Boom!");
+		        document.getElementById('button').style.visibility = 'hidden';
+		        return;
+		    }
+		
+		    document.getElementById("timer").innerHTML = count + " secs";
+		}
+>>>>>>> 8865913693746c227d84e5de89407297f0367e59
 
 function timer() {
     count = count - 1;
@@ -44,7 +68,26 @@ function timer() {
 }
 		</script>
 		<script type="text/javascript">
-		
+		$(function () {
+    $("#button").click(function () {
+        getLocation();
+    });
+});
+
+function getLocation() {
+    if (navigator.geolocation) {
+       navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+function showPosition(position) {
+    $(".box1").html(position.coords.latitude);
+    $(".box2").html(position.coords.longitude);
+} 
+
+getLocation();
 		</script>
 	</body>
 </html>
